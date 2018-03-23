@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta -->
+        <meta charset="utf-8"/>
+        <meta content="initial-scale=1, width=device-width" name="viewport"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- App's own CSS -->
+        <link href="/static/styles.css" rel="stylesheet"/>
+        <title>Error page</title>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-dark bg-dark" id="topsector">
+            <!-- Navbar content -->
+            <a class="navbar-brand" href="#">
+                <img src="/static/bootstrap-solid.svg" width="30" height="30" alt="">
+            </a>
+            <a class="navbar-brand" href="#">Company name</a>
+            <a class="btn btn-light" href="{{ url_for('index') }}" role="button">Go home</a>
+        </nav>
+        <!-- Navbar End -->
+        <div class="row">
+            <img class="d-block w-100"  width="480" height="680" src="static/404/oops-404-main.jpg" alt="Error">
+        </div>
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">
+                <h2>Error code: {{ top | urlencode }}</h2>
+            </h4>
+            <p>Explanation: {{ bottom | urlencode }}</p>
+            <hr>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- app's own JavaScript -->
+        <script src="/static/scripts.js"></script>
+</body>

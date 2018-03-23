@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en" class="full-height">
+    <head>
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta -->
+        <meta charset="utf-8"/>
+        <meta content="initial-scale=1, width=device-width" name="viewport"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>My Project</title>
+        <style>
+            body, html {
+                height: 100%;
+            }
+
+            body {
+            /* The image used */
+            background: url("/static/background/engine.jpeg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            }
+
+            .header {
+                width: 100%;
+                height: 100%;
+                min-height: 100%;
+            }
+
+            .navbar-brand {
+                font-size: 24px;
+                font-weight: bold;
+                color: #fff;
+                font-style: italic;
+            }
+
+            .inner {
+                padding: 30px;
+            }
+
+            .carousel-inner {
+                margin-top: 20px;
+            }
+
+            .masthead-nav > li {
+                display: inline-block;
+            }
+
+            .masthead-nav > li + li {
+              margin-left: 20px;
+            }
+
+            .masthead-nav > li > a {
+              padding-right: 0;
+              padding-left: 0;
+              font-size: 16px;
+              font-weight: bold;
+              color: #fff;
+              /* IE8 proofing */
+              color: rgba(255, 255, 255, .95);
+              border-bottom: 2px solid transparent;
+            }
+
+            .masthead-nav > li > a:hover,
+            .masthead-nav > li > a:focus {
+              background-color: transparent;
+              color: #fff;
+              border-bottom-color: #fff;
+            }
+
+            .masthead-nav > .active > a,
+            .masthead-nav > .active > a:hover,
+            .masthead-nav > .active > a:focus {
+              color: #fff;
+              border-bottom-color: #fff;
+            }
+
+            @media (min-width: 768px) {
+              .navbar-brand {
+                float: left;
+              }
+              .masthead-nav {
+                float: right;
+              }
+            }
+
+            @media (max-width: 768px) {
+              .navbar-toggle {
+                background: #000 !important;
+              }
+            }
+
+            .tabStrip {
+              background: #f3eee9;
+              border: none;
+              padding-left: 0;
+              padding-right: 0;
+            }
+
+            .grey {
+              background: grey;
+            }
+
+            .blue {
+              background: #00BFFF;
+            }
+
+            .orange {
+              background: #FF8C00;
+            }
+
+            .green {
+              background: #6B8E23;
+            }
+
+            .tabStrip ul li a {
+              color: #fff;
+            }
+
+            .tabStrip ul li a:hover {
+              border: none;
+              background: none;
+            }
+
+            .container-header {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              align-content: center;
+              flex-wrap: wrap;
+            }
+            .mybtn {
+              flex: 1 1 auto;
+              margin: 10px;
+              padding: 30px;
+              text-align: center;
+              text-transform: uppercase;
+              transition: 0.5s;
+              background-size: 200% auto;
+              color: white;
+             /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+              box-shadow: 0 0 20px #eee;
+              border-radius: 10px;
+             }
+
+             .mybtn-sm {
+              flex: 1 1 auto;
+              margin: 5px;
+              padding: 5px;
+              text-align: center;
+              text-transform: uppercase;
+              transition: 0.5s;
+              background-size: 100% auto;
+              color: white;
+             /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+              box-shadow: 0 0 5px #eee;
+              border-radius: 10px;
+             }
+
+            /* <- Magic Stuff Start */
+            .btn:hover {
+            background-position: right center; /* change the direction of the change here */
+            }
+
+            .btn-1 {
+              background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+            }
+
+            .btn-2 {
+              background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+            }
+
+            .btn-3 {
+              background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+            }
+
+            .btn-4 {
+              background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
+            }
+
+            .btn-5 {
+              background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 51%, #ffecd2 100%);
+            }
+
+            .slide {
+                text-align: center;
+                /* Center slide text vertically */
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                -webkit-justify-content: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+            }
+
+            .carousel-inner > .carousel-item > .mycardplace {
+              margin: 0 auto;
+              align-items: center;
+            }
+
+            .carousel-inner > .carousel-item > .card {
+              margin: 0 auto;
+              align-items: center;
+            }
+
+            .mycardplace {
+                width: 320px;
+                height: 615px;
+                perspective: 1000px;
+            }
+
+            .mycard {
+                position: relative;
+                transform-style: preserve-3d;
+                transition: all 0.5s ease;
+                width:100%;
+                height:100%;
+                border-radius:30px;
+            }
+
+            .mycard:hover {
+                box-shadow: 0 0 2em green;
+            }
+
+            .cardfront {
+                position: absolute;
+                backface-visibility: hidden;
+                width:100%;
+                height:100%;
+                border-radius:20px;
+                -webkit-transform: rotateY(0deg);
+                transform: rotateY(0deg);
+            }
+
+            .cardback {
+                position: absolute;
+                backface-visibility: hidden;
+                transform: rotateY(180deg);
+                -webkit-transform: rotateY(180deg);
+                width:100%;
+                height:100%;
+            }
+
+            .mycardplace.clicked .mycard {
+               transform: rotateY(180deg);
+            }
+
+            .carousel-control-prev {
+                width: 100px;
+                height: 100px;
+            }
+
+            .carousel-control-next {
+                width: 100px;
+                height: 100px;
+            }
+
+            .flipcard {
+                perspective: 800;
+                -moz-perspective: 800;
+                -webkit-perspective: 800;
+                width: 100%;
+                border-radius: 25px;
+                transform-style: preserve-3d;
+                -moz-transform-style: preserve-3d;
+                -webkit-transform-style: preserve-3d;
+                transition: all 0.5s ease;
+                -moz-transition: all 0.5s ease;
+                -webkit-transition: all 0.5s ease;
+                cursor: pointer;
+            }
+
+            .flipcard:hover {
+                box-shadow: 0 0 2em purple;
+            }
+
+            .blurbox:hover {
+                box-shadow: 0 0 2em lime;
+            }
+
+
+            .flipcard.flipped {
+                transform: rotatey(-180deg);
+                -moz-transform: rotatey(-180deg);
+                -webkit-transform: rotatey(-180deg);
+            }
+            .flipcard .face {
+                text-align: center;
+                backface-visibility: hidden;
+                -moz-backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
+            }
+            .flipcard .front {
+                display: block;
+            }
+            .flipcard.flipped .front {
+                display:none;
+            }
+            .flipcard .back {
+                transform: rotateY(180deg);
+                -moz-transform: rotateY(180deg);
+                -webkit-transform: rotateY(180deg);
+                display:none;
+            }
+            .flipcard.flipped .back {
+                display:block;
+            }
+
+            img {
+              filter: gray; /* IE6-9 */
+              -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
+                -webkit-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+                -moz-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+                box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+                margin-bottom:2px;
+            }
+
+            img:hover {
+              filter: none; /* IE6-9 */
+              -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+            }
+
+            .bgimg4 {
+                background-image: url("/static/background/butterfly-vector-pattern-2378.png");
+            }
+
+            .modal-lg {
+                max-width: 95% !important;
+            }
+
+            .modal-header, .modal-footer {
+                background-image: url("/static/background/butterfly-vector-pattern-2378.png");
+            }
+
+            .modal-body, {
+                background-image: url("/static/background/blank-chalkboard-background-3042.jpg");
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <!-- Navbar -->
+            <nav class="navbar navbar-dark bg-dark" id="topsector">
+                <!-- Navbar content -->
+                <a class="navbar-brand" href="#">
+                    <img src="/static/bootstrap-solid.svg" width="30" height="30" alt="">
+                </a>
+                <a class="navbar-brand" href="#">Company name</a>
+                <form>
+                    <a class="btn btn-light" href="#" role="button" data-toggle="modal" data-target="#removecard">
+                        <span><img src="/static/icons/003-id-card-1.png" width="20" height="20"></span>
+                        Removecard
+                    </a>
+                    <a class="btn btn-light" href="#" role="button" data-toggle="modal" data-target="#addcard">
+                        <span><img src="/static/icons/003-id-card-1.png" width="20" height="20"></span>
+                        Addcard
+                    </a>
+                    <a class="btn btn-light" href="#" role="button" data-toggle="modal" data-target="#login">
+                        <span><img src="/static/icons/016-login.png" width="20" height="20"></span>
+                        Login
+                    </a>
+                </form>
+            </nav>
+            <!-- Navbar End -->
+            <!-- Carousel -->
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner">
+            {% for row in production %}
+                {% if row.id == 1 %}
+                    <div class="carousel-item active">
+                {% else %}
+                    <div class="carousel-item">
+                {% endif %}
+                        <div class="card flipcard text-white bgimg3" id="{{row.id}}" style="width:26.5%;">
+                            <div class="face front">
+                                <div class="card-header text-center mytext1">
+                                    <h3>Touch Me</h3>
+                                </div>
+                                <img class="card-img-top img-rounded img-nofade" width="240" height="180" src="{{row.image1}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title mytext1">{{row.trademark}}</h5>
+                                    <p class="card-text mytext1">{{row.model}}</p>
+                                    <p class="card-text mytext1">{{row.year}}</p>
+                                    <p class="card-text text-success">{{row.title}}. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-3 text-dark">
+                                      <img class="rounded blurbox" src="/static/icons/styleicons/logo/logo2.png" width="160" height="100" alt="">
+                                 </a>
+                                </div>
+                            </div>
+                            <div class="face back" style="width:220%;">
+                                <h3 class="text-center mytext1">Back side</h3>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="d-inline-flex p-2 ">
+                                            <a class="thumbnail blurbox" data-toggle="modal" data-title="picture1" data-target="#card{{row.image2}}">
+                                                <img class="img-responsive" width="300" height="220" src="{{row.image2}}" />
+                                            </a>
+                                        </div>
+                                        <div class="d-inline-flex p-2">
+                                            <a class="thumbnail blurbox" data-toggle="modal" data-title="picture1" data-target="#card{{row.image3}}">
+                                                <img class="img-responsive" width="300" height="220" src="{{row.image3}}" />
+                                            </a>
+                                        </div>
+                                        <div class="d-inline-flex p-2">
+                                            <a class="thumbnail blurbox" data-toggle="modal" data-title="picture1" data-target="#card{{row.image4}}">
+                                                <img class="img-responsive" width="300" height="220" src="{{row.image4}}" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                <div class="col">
+                                    <table class="table table-hover table-dark mybtn-sm blurbox">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th colspan="2">Parameters</th>
+                                                <th scope="col">Values</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="bg-success">
+                                                <th scope="row">1</th>
+                                                <td colspan="2">Mark:</td>
+                                                <td>{{row.trademark}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td colspan="2">Model:</td>
+                                                <td>{{row.model}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td colspan="2">Manufactured year:</td>
+                                                <td>{{row.year}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">4</th>
+                                                <td colspan="2">Mileage:</td>
+                                                <td>{{row.mileage}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">5</th>
+                                                <td colspan="2">Color:</td>
+                                                <td>{{row.color}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">6</th>
+                                                <td colspan="2">Vehicle:</td>
+                                                <td>{{row.engine}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">7</th>
+                                                <td colspan="2">Size:</td>
+                                                <td>{{row.size}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">8</th>
+                                                <td colspan="2">Doors:</td>
+                                                <td>{{row.doors}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">9</th>
+                                                <td colspan="2">Seats:</td>
+                                                <td>{{row.seats}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">10</th>
+                                                <td colspan="2">Interior:</td>
+                                                <td>{{row.interior}}</td>
+                                            </tr>
+                                            <tr class="bg-success">
+                                                <th scope="row">11</th>
+                                                <td colspan="2">Advances:</td>
+                                                <td>{{row.advances}}</td>
+                                            </tr>
+                                            <tr class="bg-danger">
+                                                <th scope="row">12</th>
+                                                <td colspan="2">Defects:</td>
+                                                <td>{{row.defects}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a class="btn mybtn btn-1 carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="" aria-hidden="true"><img src="/static/icons/back-9.png" width="80" height="80"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="btn mybtn btn-2 carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="" aria-hidden="true"><img src="/static/icons/next-10.png" width="80" height="80"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <!-- Carousel end -->
+        <!--Header Menu-->
+        </header>
+        <div class="container-header">
+            <a class="btn mybtn btn-1" data-toggle="modal" data-target="#aboutus">About us</a>
+            <a class="btn mybtn btn-2" data-toggle="modal" data-target="#updates">Updates</a>
+            <a class="btn mybtn btn-3" data-toggle="modal" data-target="#contacts">Contacts</a>
+            <a class="btn mybtn btn-4">Preorder</a>
+            <a class="btn mybtn btn-5">Auction</a>
+        </div>
+        <!-- Header Menu end -->
+        <!-- Contact us Modal -->
+        <div class="modal fade" id="contacts" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Contacts Information</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-left">
+                        <p>Phone numbers: 012345678911 | 258129201921</p>
+                        <p>E-mail: some@email.com</p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Contactus Modal -->
+        <!-- Addcard Modal Form -->
+        <div class="modal fade" id="addcard" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Addcard</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ url_for('addcard') }}" method="POST" enctype="multipart/form-data">
+                            <!-- addcard start -->
+                                <div class="form-group row">
+                                  <div class="col-2">
+                                    <label for="Product ID">Product ID</label>
+                                    <input type="text" class="form-control" name="productid" id="productid" placeholder="productid">
+                                  </div>
+                                  <div class="col-2">
+                                    <label for="Trademark">Trademark</label>
+                                    <input type="text" class="form-control" name="trademark" id="trademark" placeholder="trademark">
+                                  </div>
+                                  <div class="col-2">
+                                    <label for="Model">Model</label>
+                                    <input type="text" class="form-control" name="model" id="model" placeholder="model">
+                                  </div>
+                                  <div class="col-2">
+                                    <label for="Year">Year</label>
+                                    <input type="text" class="form-control" name="year" id="year" placeholder="year">
+                                  </div>
+                                  <div class="col-2">
+                                    <label for="Mileage">Mileage</label>
+                                    <input type="text" class="form-control" name="mileage" id="mileage" placeholder="mileage">
+                                  </div>
+                                  <div class="col-2">
+                                    <label for="Color">Color</label>
+                                    <input type="text" class="form-control" name="color" id="color" placeholder="color">
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <div class="col-2">
+                                    <label for="Engine">Engine Type</label>
+                                    <input type="text" class="form-control" name="engine" id="engine" placeholder="engine">
+                                  </div>
+                                  <div class="col-2">
+                                    <label for="Size">Size</label>
+                                    <input type="text" class="form-control" name="size" id="size" placeholder="size">
+                                  </div>
+                                  <div class="col-2">
+                                    <label for="Doors">Doors</label>
+                                    <input type="text" class="form-control" name="doors" id="doors" placeholder="doors">
+                                  </div>
+                                  <div class="col-2">
+                                    <label for="Seats">Seats</label>
+                                    <input type="text" class="form-control" name="seats" id="seats" placeholder="seats">
+                                  </div>
+                                  <div class="col-2">
+                                    <label for="Interior">Interior</label>
+                                    <input type="text" class="form-control" name="interior" id="interior" placeholder="interior">
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <div class="col-4">
+                                    <label for="Title">Title</label>
+                                    <input type="text" class="form-control" name="title" id="title" placeholder="Card title">
+                                  </div>
+                                  <div class="col-4">
+                                    <label for="Defects">Advances</label>
+                                    <input type="text" class="form-control" name="advances" id="advances" placeholder="adv. complectation">
+                                  </div>
+                                  <div class="col-4">
+                                    <label for="Defects">Defects</label>
+                                    <input type="text" class="form-control" name="defects" id="defects" placeholder="Car defects">
+                                  </div>
+                                </div>
+                            <!-- end addcard -->
+                            <!-- images select -->
+                            <div class="form-group">
+                                <label for="File">Files input</label>
+                                <input type="file" class="form-control-file text-success" name="file1" id="File" aria-describedby="fileHelp">
+                            </div>
+                            <div class="form-group">
+                                <label for="File">Files input</label>
+                                <input type="file" class="form-control-file text-success" name="file2" id="File" aria-describedby="fileHelp">
+                            </div>
+                            <div class="form-group">
+                                <label for="File">Files input</label>
+                                <input type="file" class="form-control-file text-success" name="file3" id="File" aria-describedby="fileHelp">
+                            </div>
+                            <div class="form-group">
+                                <label for="File">Files input</label>
+                                <input type="file" class="form-control-file text-success" name="file4" id="File" aria-describedby="fileHelp">
+                            </div>
+                            <!-- images select end -->
+                            <button type="submit" name="addcard" class="btn btn-primary">Confirm</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End addcard Modal Form -->
+        <!-- Removecard modal -->
+        <div class="modal fade" id="removecard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Remove card</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <form action="{{ url_for('remove') }}" method="POST">
+                      <fieldset>
+                          <div class="form-group">
+                              <label class="mr-sm-2" for="removecardtitle">Removecard number</label>
+                              <select class="custom-select form-control input-group mb-2 mr-sm-2 mb-sm-0" id="removecardtitle" name="productid" type="text">
+                                <option disabled="" selected="" value="">Choose...</option>
+                                {% for r in production %}
+                                <option value="{{ r.id }}">{{ r.id }},{{r.trademark}},{{r.model}},{{r.year}}</option>
+                                {% endfor %}
+                              </select>
+                          </div>
+                      </fieldset>
+                      <button type="submit" name="removecard" class="btn btn-1">Confirm</button>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-1" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End remove card modal -->
+        <!-- Login Modal Form -->
+        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Login form</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ url_for('login') }}" method="post">
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" name="email2" id="inputEmail3" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" name="password2" id="inputPassword3" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <button type="submit" name="loginbtn" class="btn btn-primary">Login</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Login Modal Form -->
+        <!-- image gallery modals -->
+        {% for i in production %}
+        <div class="modal fade" id="card{{i.image2}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Gallery</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img class="img-fluid rounded img-nofade" src="{{i.image2}}" alt="Responsive image">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>{{i.trademark}} {{i.model}}</h3>
+                            <p>picture 1</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="card{{i.image3}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Gallery</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img class="img-fluid rounded img-nofade" src="{{i.image3}}" alt="Responsive image">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>{{i.trademark}} {{i.model}}</h3>
+                            <p>picture 2</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="card{{i.image4}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Gallery</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img class="img-fluid rounded img-nofade" src="{{i.image4}}" alt="Responsive image">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>{{i.trademark}} {{i.model}}</h3>
+                            <p>picture 3</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <!--image gallery modals end -->
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- app's own JavaScript -->
+        <script src="/static/scripts.js"></script>
+        <script>
+            $('.flipcard').click(function (e) {
+                var $card = $(this);
+                if ($card.hasClass("flipped")) {
+                    $card.removeClass('flipped');
+                } else {
+                    $card.addClass('flipped');
+                }
+            });
+        </script>
+    </body>
+    <foot>
+        <div class="card text-center">
+            <div class="card-header text-light">
+                Featured
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-success">Special title treatment</h5>
+                <p class="card-text text-success">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#topsector" class="btn btn-success">Go top</a>
+            </div>
+            <div class="card-footer text-muted bg-white text-dark">
+                Developed by: mmstar
+                for cs50 2018
+            </div>
+        </div>
+    </foot>
+</html>

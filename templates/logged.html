@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en" class="full-height">
+    <head>
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta -->
+        <meta charset="utf-8"/>
+        <meta content="initial-scale=1, width=device-width" name="viewport"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet"/>
+        <title>My Project</title>
+        <style>
+            body, html {
+            height: 100%;
+            }
+
+            body {
+            /* The image used */
+            background: url("/static/background/engine.jpeg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            }
+
+            .header {
+            width: 100%;
+            height: 100%;
+            min-height: 100%;
+            }
+
+            .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            font-style: italic;
+            }
+
+            .inner {
+            padding: 30px;
+            }
+
+            .carousel-inner {
+            margin-top: 20px;
+            }
+
+            .masthead-nav > li {
+            display: inline-block;
+            }
+
+            .masthead-nav > li + li {
+            margin-left: 20px;
+            }
+
+            .masthead-nav > li > a {
+            padding-right: 0;
+            padding-left: 0;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            /* IE8 proofing */
+            color: rgba(255, 255, 255, .95);
+            border-bottom: 2px solid transparent;
+            }
+
+            .masthead-nav > li > a:hover,
+            .masthead-nav > li > a:focus {
+            background-color: transparent;
+            color: #fff;
+            border-bottom-color: #fff;
+            }
+
+            .masthead-nav > .active > a,
+            .masthead-nav > .active > a:hover,
+            .masthead-nav > .active > a:focus {
+            color: #fff;
+            border-bottom-color: #fff;
+            }
+
+            @media (min-width: 768px) {
+              .navbar-brand {
+                float: left;
+                }
+                .masthead-nav {
+                float: right;
+                }
+            }
+
+            @media (max-width: 768px) {
+              .navbar-toggle {
+              background: #000 !important;
+              }
+            }
+
+            .tabStrip {
+              background: #f3eee9;
+              border: none;
+              padding-left: 0;
+              padding-right: 0;
+            }
+
+            .grey {
+              background: grey;
+            }
+
+            .blue {
+              background: #00BFFF;
+            }
+
+            .orange {
+              background: #FF8C00;
+            }
+
+            .green {
+              background: #6B8E23;
+            }
+
+            .tabStrip ul li a {
+              color: #fff;
+            }
+
+            .tabStrip ul li a:hover {
+              border: none;
+              background: none;
+            }
+
+            .container-header {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              align-content: center;
+              flex-wrap: wrap;
+            }
+
+            .mybtn {
+              flex: 1 1 auto;
+              margin: 10px;
+              padding: 30px;
+              text-align: center;
+              text-transform: uppercase;
+              transition: 0.5s;
+              background-size: 200% auto;
+              color: white;
+             /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+              box-shadow: 0 0 20px #eee;
+              border-radius: 10px;
+            }
+
+            .mybtn-sm {
+              flex: 1 1 auto;
+              margin: 10px;
+              padding: 10px;
+              text-align: center;
+              text-transform: uppercase;
+              transition: 0.5s;
+              background-size: 100% auto;
+              color: white;
+             /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+              box-shadow: 0 0 5px #eee;
+              border-radius: 10px;
+            }
+
+              /* <- Magic Stuff Start */
+            .btn:hover {
+              background-position: right center; /* change the direction of the change here */
+            }
+
+            .btn-1 {
+              background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+            }
+
+            .btn-2 {
+              background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+            }
+
+            .btn-3 {
+              background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+            }
+
+            .btn-4 {
+              background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
+            }
+
+            .btn-5 {
+              background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 51%, #ffecd2 100%);
+            }
+
+            .slide {
+              text-align: center;
+              /* Center slide text vertically */
+              display: -webkit-box;
+              display: -ms-flexbox;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-box-pack: center;
+              -ms-flex-pack: center;
+              -ms-box-pack: center;
+              -moz-box-pack: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              -webkit-box-align: center;
+              -moz-box-align: center;
+              -ms-box-align: center;
+              -ms-flex-align: center;
+              -webkit-align-items: center;
+              align-items: center;
+            }
+
+            .carousel-inner > .carousel-item > .mycardplace {
+              margin: 0 auto;
+              align-items: center;
+            }
+
+            .carousel-inner > .carousel-item > .card {
+              margin: 0 auto;
+              align-items: center;
+            }
+
+            .carousel-control-prev {
+              width: 100px;
+              height: 100px;
+            }
+
+            .carousel-control-next {
+              width: 100px;
+              height: 100px;
+            }
+
+            .icon-prev {
+              margin:0;
+              padding:0;
+              width:60px;
+              height:60px;
+            }
+
+            .icon-next {
+              margin:0;
+              padding:0;
+              width:60px;
+              height:60px;
+            }
+
+            .flipcard {
+              perspective: 800;
+              -moz-perspective: 800;
+              -webkit-perspective: 800;
+              width: 100%;
+              border-radius: 25px;
+              transform-style: preserve-3d;
+              -moz-transform-style: preserve-3d;
+              -webkit-transform-style: preserve-3d;
+              transition: all 0.5s ease;
+              -moz-transition: all 0.5s ease;
+              -o-transition: all 0.5s ease;
+              -webkit-transition: all 0.5s ease;
+              cursor: pointer;
+            }
+
+            .flipcard:hover {
+              box-shadow: 0 0 2em purple;
+            }
+
+            .blurbox:hover {
+              box-shadow: 0 0 2em lime;
+            }
+
+
+            .flipcard.flipped {
+              -o-transform: rotatey(-180deg);
+              -ms-transform: rotatey(-180deg);
+              -moz-transform: rotatey(-180deg);
+              -webkit-transform: rotatey(-180deg);
+              transform: rotatey(-180deg);
+            }
+
+            .flipcard .face {
+              text-align: center;
+              backface-visibility: hidden;
+              -moz-backface-visibility: hidden;
+              -webkit-backface-visibility: hidden;
+            }
+
+            .flipcard .front {
+              display: block;
+            }
+
+            .flipcard.flipped .front {
+              display:none;
+            }
+
+            .flipcard .back {
+              -o-transform: rotateY(180deg);
+              -ms-transform: rotateY(180deg);
+              -moz-transform: rotateY(180deg);
+              -webkit-transform: rotateY(180deg);
+              transform: rotateY(180deg);
+              display:none;
+            }
+
+            .flipcard.flipped .back {
+            display:block;
+            }
+
+            img {
+              filter: gray; /* IE6-9 */
+              -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+              -webkit-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+              -moz-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+              box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+              margin-bottom:2px;
+            }
+
+            img:hover {
+              filter: none; /* IE6-9 */
+              -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
+            }
+
+            .img-noshadow {
+              box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+            }
+
+            .img-nofade {
+              filter: none; /* IE6-9 */
+              -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
+            }
+
+            .bgimg3, .modal-body, .card-body, .card-header {
+              background-image: url("/static/background/blank-chalkboard-background-3042.jpg");
+            }
+
+            .bgimg4, .modal-header, .modal-footer{
+              background-image: url("/static/background/butterfly-vector-pattern-2378.png");
+            }
+
+            .bgimg5 {
+              background-image: url("/static/background/shiny-purple-floral-pattern-567.png");
+            }
+
+            .bgimg6 {
+              background-image: url("/static/background/damask-seamless-pattern-dark-1496.png");
+            }
+
+            .bgimg2 {
+              background-image: url("/static/background/diamond-background-919.png");
+              filter: #FFFFFF; /* IE6-9 */
+            }
+
+            .mytext1 {
+              text-transform: uppercase;
+              font-size: 20px;
+              position: relative;
+              color: #FFF;
+              font-weight: 300;
+              padding: 5;
+              margin: 5;
+              line-height: 1;
+              text-shadow: 0 0 10px #ff006c, 0 0 20px #ff006c, 0 0 30px #ff006c;
+            }
+
+            .modal-lg {
+              max-width: 80% !important;
+            }
+    </style>
+    </head>
+    <body>
+        <header>
+            <!-- Navbar -->
+            <nav class="navbar bgimg3" id="topsector">
+                <!-- Navbar content -->
+                <a class="navbar-brand" href="#">
+                    <img class="img-nofade" src="/static/icons/styleicons/logo/logo2.png" width="70" height="50" alt="">
+                </a>
+                <h3 class="mytext1"><a class="navbar-brand" href="#">L&K Trading </a></h3>
+                <h3 class="text-success"><a class="navbar-brand" href="#">Welcome back, {{username}}</a></h3>
+                <form>
+                    <a class="btn btn-5 text-dark" href="#" role="button" data-toggle="modal" data-target="#removecard">
+                        <span><img class="img-noshadow" src="/static/icons/003-id-card-1.png" width="20" height="20"></span>
+                        Removecard
+                    </a>
+                    <a class="btn btn-5 text-dark" href="#" role="button" data-toggle="modal" data-target="#addcard">
+                        <span><img class="img-noshadow" src="/static/icons/003-id-card-1.png" width="20" height="20"></span>
+                        Addcard
+                    </a>
+                    <a class="btn btn-5 text-dark" href="#" role="button" data-toggle="modal" data-target="#selectcard">
+                        <span><img class="img-noshadow" src="/static/icons/settings_1_1.png" width="20" height="20"></span>
+                        Editcard
+                    </a>
+                    <a class="btn btn-5 text-dark" role="button" href="{{ url_for('logout') }}">
+                        <span><img class="img-noshadow" src="/static/icons/014-login-2.png" width="20" height="20"></span>
+                        Exit
+                    </a>
+                </form>
+            </nav>
+            <!-- navbar end-->
+            <!-- Carousel -->
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner">
+            {% for row in production %}
+                <!-- if length of list of production -->
+                {% if row.activity == "active" %}
+                    <div class="carousel-item active">
+                {% else %}
+                    <div class="carousel-item">
+                {% endif %}
+                        <div class="card flipcard text-white bgimg3" id="{{row.id}}" style="width:26.5%;">
+                            <div class="face front">
+                                <div class="card-header text-center mytext1">
+                                    <h3>Touch Me</h3>
+                                </div>
+                                <img class="card-img-top img-rounded img-nofade" width="240" height="180" src="{{row.image1}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title mytext1">{{row.trademark}}</h5>
+                                    <p class="card-text mytext1">{{row.model}}</p>
+                                    <p class="card-text mytext1">{{row.year}}</p>
+                                    <p class="card-text text-success">{{row.title}}</p>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-3 text-dark">
+                                      <img class="rounded blurbox" src="/static/icons/styleicons/logo/logo2.png" width="160" height="100" alt="">
+                                 </a>
+                                </div>
+                            </div>
+                            <div class="face back" style="width:220%;">
+                                <h3 class="text-center mytext1">Back side</h3>
+                                <div class="form-group row">
+                                    <div class="col d-inline-flex">
+                                      <a class="btn mybtn btn-2" data-toggle="modal" data-target="#gallery{{row.image1}}">Photo gallery</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                    <!-- back face images start -->
+                                    <div class="form-group row">
+                                        <div class="col d-inline-flex">
+                                            <a class="thumbnail" data-toggle="modal" id="backimg1" data-title="picture1" data-target="#">
+                                                <img class="img-responsive" width="350" height="240" src="{{row.image1}}" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col d-inline-flex">
+                                            <a class="thumbnail" data-toggle="modal" id="backimg1" data-title="picture2" data-target="#">
+                                                <img class="img-responsive" width="350" height="240" src="{{row.image2}}" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col d-inline-flex">
+                                            <a class="thumbnail" data-toggle="modal" id="backimg1" data-title="picture3" data-target="#">
+                                                <img class="img-responsive" width="350" height="240" src="{{row.image3}}" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- back face images end -->
+                                <div class="col">
+                                    <table class="table table-hover table-dark blurbox">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th colspan="2">Parameters</th>
+                                                <th scope="col">Values</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="bg-success">
+                                                <th scope="row">1</th>
+                                                <td colspan="2">Mark:</td>
+                                                <td>{{row.trademark}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td colspan="2">Model:</td>
+                                                <td>{{row.model}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td colspan="2">Manufactured year:</td>
+                                                <td>{{row.year}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">4</th>
+                                                <td colspan="2">Mileage:</td>
+                                                <td>{{row.mileage}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">5</th>
+                                                <td colspan="2">Color:</td>
+                                                <td>{{row.color}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">6</th>
+                                                <td colspan="2">Vehicle:</td>
+                                                <td>{{row.engine}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">7</th>
+                                                <td colspan="2">Size:</td>
+                                                <td>{{row.size}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">8</th>
+                                                <td colspan="2">Doors:</td>
+                                                <td>{{row.doors}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">9</th>
+                                                <td colspan="2">Seats:</td>
+                                                <td>{{row.seats}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">10</th>
+                                                <td colspan="2">Interior:</td>
+                                                <td>{{row.interior}}</td>
+                                            </tr>
+                                            <tr class="bg-success">
+                                                <th scope="row">11</th>
+                                                <td colspan="2">Advances:</td>
+                                                <td>{{row.advances}}</td>
+                                            </tr>
+                                            <tr class="bg-danger">
+                                                <th scope="row">12</th>
+                                                <td colspan="2">Defects:</td>
+                                                <td>{{row.defects}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a class="btn mybtn btn-1 carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="" aria-hidden="true"><img src="/static/icons/back-9.png" width="80" height="80"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="btn mybtn btn-2 carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="" aria-hidden="true"><img src="/static/icons/next-10.png" width="80" height="80"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <!-- Carousel end -->
+        </header>
+        <!--Header Menu-->
+        <div class="container-header">
+            <a class="btn mybtn btn-1" data-toggle="modal" data-target="#aboutus">About us</a>
+            <a class="btn mybtn btn-2" data-toggle="modal" data-target="#updates">Updates</a>
+            <a class="btn mybtn btn-3" data-toggle="modal" data-target="#contacts">Contacts</a>
+        </div>
+        <!-- Header Menu end -->
+        <!-- AboutUs modal-->
+        <div class="modal fade" id="aboutus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header bgimg4">
+                <h5 class="modal-title text-light mytext1" id="exampleModalLongTitle">L&K Trading</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body bgimg3">
+                <p class="text-success">
+                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+
+                    Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+
+                    Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
+
+                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+
+                    Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+
+                    Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
+                </p>
+              </div>
+              <div class="modal-footer bgimg4">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--about us modal end -->
+        <!-- Contact us Modal -->
+        <div class="modal fade" id="contacts" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bgimg4">
+                        <h3 class="modal-title text-light mytext1" id="exampleModalLabel"><strong><bold>Contacts Information</bold></strong></h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body bgimg3 text-warning">
+                        <p><h5><span class="mytext1">Phone numbers:</span> 012345678911 | 258129201921</h5></p>
+                        <p><h5><span class="mytext1">E-mail:</span> some@email.com</h5></p>
+                        <p><h5><span class="mytext1">Facebook page:</span> href...</h5></p>
+                    </div>
+                    <div class="modal-footer bgimg4">
+                    <button type="button" class="btn btn-3" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Contactus Modal -->
+        <!-- updates modal start -->
+         <div class="modal fade" id="updates" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bgimg4">
+                        <h3 class="modal-title text-light mytext1" id="exampleModalLabel"><strong><bold>Updates Information</bold></strong></h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body bgimg3 text-center text-white">
+                        <table class="table table-hover table-dark blurbox">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th colspan="2">Date</th>
+                                    <th scope="col">Info</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              {% for i in updates %}
+                                <tr>
+                                  {% if i.status == "new supply" %}
+                                    <th scope="row">{{ loop.index }}</th>
+                                    <td colspan="2">{{i.date}}:</td>
+                                    <td>{{i.trademark}}, {{i.model}}, {{i.year}}</td>
+                                    <td><span class="badge badge-success">New</span></td>
+                                  {% elif i.status == "updated" %}
+                                    <th scope="row">{{ loop.index }}</th>
+                                    <td colspan="2">{{i.date}}:</td>
+                                    <td>{{i.trademark}}, {{i.model}}, {{i.year}}</td>
+                                    <td><span class="badge badge-warning">Updated</span></td>
+                                  {% else %}
+                                    <th scope="row">{{ loop.index }}</th>
+                                    <td colspan="2">{{i.date}}:</td>
+                                    <td>{{i.trademark}}, {{i.model}}, {{i.year}}</td>
+                                    <td><span class="badge badge-danger">Sold</span></td>
+                                  {% endif %}
+                                </tr>
+                              {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer bgimg4">
+                    <button type="button" class="btn btn-3" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- updates modal end -->
+        <!-- carousel in  modal start -->
+        {% for r in production %}
+        <div class="modal fade" id="gallery{{r.image1}}">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <a type="button" class="btn btn-danger" href="#carouselinside{{r.id}}" data-slide="prev">PREV</a>
+                <h5 class="modal-title text-light mytext1">Photo gallery</h5>
+                <a type="button" class="btn btn-danger" href="#carouselinside{{r.id}}" data-slide="next">NEXT</a>
+              </div>
+              <!-- Modal body -->
+              <div class="modal-body">
+                <div id="carouselinside{{r.id}}" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ul class="carousel-indicators">
+                    <li data-target="#carouselinside" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselinside" data-slide-to="1"></li>
+                    <li data-target="#carouselinside" data-slide-to="2"></li>
+                    <li data-target="#carouselinside" data-slide-to="3"></li>
+                    <li data-target="#carouselinside" data-slide-to="4"></li>
+                    <li data-target="#carouselinside" data-slide-to="5"></li>
+                    <li data-target="#carouselinside" data-slide-to="6"></li>
+                    <li data-target="#carouselinside" data-slide-to="7"></li>
+                    <li data-target="#carouselinside" data-slide-to="8"></li>
+                    <li data-target="#carouselinside" data-slide-to="9"></li>
+                    <li data-target="#carouselinside" data-slide-to="10"></li>
+                    <li data-target="#carouselinside" data-slide-to="11"></li>
+                  </ul>
+                  <!-- The slideshow -->
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img class="img-fluid rounded img-nofade" src="{{r.image1}}" alt="Responsive image">
+                      <div class="carousel-caption d-none d-md-block text-danger">
+                        <h3>Picture 1</h3>
+                        <p>{{ r.trademark }}, {{ r.model }}, {{ r.year }}</p>
+                        <p>{{ r.title }}</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img class="img-fluid rounded img-nofade" src="{{r.image2}}" alt="Responsive image">
+                      <div class="carousel-caption d-none d-md-block text-danger">
+                        <h3>Picture 2</h3>
+                        <p>{{ r.trademark }}, {{ r.model }}, {{ r.year }}</p>
+                        <p>{{ r.title }}</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img class="img-fluid rounded img-nofade" src="{{r.image3}}" alt="Responsive image">
+                      <div class="carousel-caption d-none d-md-block text-danger">
+                        <h3>Picture 3</h3>
+                        <p>{{ r.trademark }}, {{ r.model }}, {{ r.year }}</p>
+                        <p>{{ r.title }}</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img class="img-fluid rounded img-nofade" src="{{r.image4}}" alt="Responsive image">
+                      <div class="carousel-caption d-none d-md-block text-danger">
+                        <h3>Picture 4</h3>
+                        <p>{{ r.trademark }}, {{ r.model }}, {{ r.year }}</p>
+                        <p>{{ r.title }}</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img class="img-fluid rounded img-nofade" src="{{r.image5}}" alt="Responsive image">
+                      <div class="carousel-caption d-none d-md-block text-danger">
+                        <h3>Picture 5</h3>
+                        <p>{{ r.trademark }}, {{ r.model }}, {{ r.year }}</p>
+                        <p>{{ r.title }}</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img class="img-fluid rounded img-nofade" src="{{r.image6}}" alt="Responsive image">
+                      <div class="carousel-caption d-none d-md-block text-danger">
+                        <h3>Picture 6</h3>
+                        <p>{{ r.trademark }}, {{ r.model }}, {{ r.year }}</p>
+                        <p>{{ r.title }}</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img class="img-fluid rounded img-nofade" src="{{r.image7}}" alt="Responsive image">
+                      <div class="carousel-caption d-none d-md-block text-danger">
+                        <h3>Picture 7</h3>
+                        <p>{{ r.trademark }}, {{ r.model }}, {{ r.year }}</p>
+                        <p>{{ r.title }}</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img class="img-fluid rounded img-nofade" src="{{r.image8}}" alt="Responsive image">
+                      <div class="carousel-caption d-none d-md-block text-danger">
+                        <h3>Picture 8</h3>
+                        <p>{{ r.trademark }}, {{ r.model }}, {{ r.year }}</p>
+                        <p>{{ r.title }}</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img class="img-fluid rounded img-nofade" src="{{r.image9}}" alt="Responsive image">
+                      <div class="carousel-caption d-none d-md-block text-danger">
+                        <h3>Picture 9</h3>
+                        <p>{{ r.trademark }}, {{ r.model }}, {{ r.year }}</p>
+                        <p>{{ r.title }}</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img class="img-fluid rounded img-nofade" src="{{r.image10}}" alt="Responsive image">
+                      <div class="carousel-caption d-none d-md-block text-danger">
+                        <h3>Picture 10</h3>
+                        <p>{{ r.trademark }}, {{ r.model }}, {{ r.year }}</p>
+                        <p>{{ r.title }}</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img class="img-fluid rounded img-nofade" src="{{r.image11}}" alt="Responsive image">
+                      <div class="carousel-caption d-none d-md-block text-danger">
+                        <h3>Picture 11</h3>
+                        <p></p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                     <img class="img-fluid rounded img-nofade" src="{{r.image12}}" alt="Responsive image">
+                      <div class="carousel-caption d-none d-md-block text-danger">
+                        <h3>Picture 12</h3>
+                        <p>{{ r.trademark }}, {{ r.model }}, {{ r.year }}</p>
+                        <p>{{ r.title }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Left and right controls -->
+                </div>
+              </div>
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <!-- carousel in modal end -->
+        <!-- Addcard Modal Form -->
+        <div class="modal fade" id="addcard" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-light mytext1" id="exampleModalLongTitle">Addcard</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ url_for('addcard') }}" method="POST" enctype="multipart/form-data">
+                            <!-- addcard start -->
+                                <div class="form-group row">
+                                  <div class="col-2">
+                                    <small class="form-text text-warning text-center">Card number</small>
+                                    <label for="Product ID">Product ID</label>
+                                    <input type="text" class="form-control" name="productid" id="productid" placeholder="productid">
+                                  </div>
+                                  <div class="col-2">
+                                    <small class="form-text text-warning text-center">Trademark</small>
+                                    <label for="Trademark">Trademark</label>
+                                    <input type="text" class="form-control" name="trademark" id="trademark" placeholder="trademark">
+                                  </div>
+                                  <div class="col-2">
+                                    <small class="form-text text-warning text-center">Car model</small>
+                                    <label for="Model">Model</label>
+                                    <input type="text" class="form-control" name="model" id="model" placeholder="model">
+                                  </div>
+                                  <div class="col-2">
+                                    <small class="form-text text-warning text-center">Year made</small>
+                                    <label for="Year">Year</label>
+                                    <input type="text" class="form-control" name="year" id="year" placeholder="year">
+                                  </div>
+                                  <div class="col-2">
+                                    <small class="form-text text-warning text-center">Mileage</small>
+                                    <label for="Mileage">Mileage</label>
+                                    <input type="text" class="form-control" name="mileage" id="mileage" placeholder="mileage">
+                                  </div>
+                                  <div class="col-2">
+                                    <small class="form-text text-warning text-center">Car color</small>
+                                    <label for="Color">Color</label>
+                                    <input type="text" class="form-control" name="color" id="color" placeholder="color">
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <div class="col-2">
+                                    <small class="form-text text-warning text-center">Engine type</small>
+                                    <label for="Engine">Engine Type</label>
+                                    <input type="text" class="form-control" name="engine" id="engine" placeholder="engine">
+                                  </div>
+                                  <div class="col-2">
+                                    <small class="form-text text-warning text-center">Car size</small>
+                                    <label for="Size">Size</label>
+                                    <input type="text" class="form-control" name="size" id="size" placeholder="size">
+                                  </div>
+                                  <div class="col-2">
+                                    <small class="form-text text-warning text-center">Doors number</small>
+                                    <label for="Doors">Doors</label>
+                                    <input type="text" class="form-control" name="doors" id="doors" placeholder="doors">
+                                  </div>
+                                  <div class="col-2">
+                                    <small class="form-text text-warning text-center">Seats number</small>
+                                    <label for="Seats">Seats</label>
+                                    <input type="text" class="form-control" name="seats" id="seats" placeholder="seats">
+                                  </div>
+                                  <div class="col-2">
+                                    <small class="form-text text-warning text-center">Interior</small>
+                                    <label for="Interior">Interior</label>
+                                    <input type="text" class="form-control" name="interior" id="interior" placeholder="interior">
+                                  </div>
+                                  <div class="col-2">
+                                      <small class="form-text text-warning text-center">Card status</small>
+                                      <label class="mr-sm-2" for="activity">Activity</label>
+                                      <select class="custom-select form-control input-group mb-2 mr-sm-2 mb-sm-0 mytext1" id="activity" name="activity" type="text">
+                                        <option disabled="" selected="" value="">Choose Activity...</option>
+                                        <option value="1"> Active </option>
+                                        <option value="0"> Not active </option>
+                                      </select>
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <div class="col-4">
+                                    <small class="form-text text-warning text-center">Card Title</small>
+                                    <label for="Title">Title</label>
+                                    <input type="text" class="form-control" name="title" id="title" placeholder="Card title">
+                                  </div>
+                                  <div class="col-4">
+                                    <small class="form-text text-warning text-center">Car advances</small>
+                                    <label for="Defects">Advances</label>
+                                    <input type="text" class="form-control" name="advances" id="advances" placeholder="adv. complectation">
+                                  </div>
+                                  <div class="col-4">
+                                    <small class="form-text text-warning text-center">Car defects</small>
+                                    <label for="Defects">Defects</label>
+                                    <input type="text" class="form-control" name="defects" id="defects" placeholder="Car defects">
+                                  </div>
+                                </div>
+                            <!-- images select -->
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <small class="form-text text-warning">Front/back side picture#1</small>
+                                    <label for="File">Files input</label>
+                                    <input type="file" class="form-control-file text-success" name="file1" id="File" aria-describedby="fileHelp">
+                                </div>
+                                <div class="col-4">
+                                    <small class="form-text text-warning">Back side picture#2</small>
+                                    <label for="File">Files input</label>
+                                    <input type="file" class="form-control-file text-success" name="file2" id="File" aria-describedby="fileHelp">
+                                </div>
+                                <div class="col-4">
+                                    <small class="form-text text-warning">Back side picture#3</small>
+                                    <label for="File">Files input</label>
+                                    <input type="file" class="form-control-file text-success" name="file3" id="File" aria-describedby="fileHelp">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <small class="form-text text-warning">Back side picture#4</small>
+                                    <label for="File">Files input</label>
+                                    <input type="file" class="form-control-file text-success" name="file4" id="File" aria-describedby="fileHelp">
+                                </div>
+                                <div class="col-4">
+                                    <small class="form-text text-warning">Back side picture#5</small>
+                                    <label for="File">Files input</label>
+                                    <input type="file" class="form-control-file text-success" name="file5" id="File" aria-describedby="fileHelp">
+                                </div>
+                                <div class="col-4">
+                                    <small class="form-text text-warning">Back side picture#6</small>
+                                    <label for="File">Files input</label>
+                                    <input type="file" class="form-control-file text-success" name="file6" id="File" aria-describedby="fileHelp">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <small class="form-text text-warning">Back side picture#7</small>
+                                    <label for="File">Files input</label>
+                                    <input type="file" class="form-control-file text-success" name="file7" id="File" aria-describedby="fileHelp">
+                                </div>
+                                <div class="col-4">
+                                    <small class="form-text text-warning">Back side picture#8</small>
+                                    <label for="File">Files input</label>
+                                    <input type="file" class="form-control-file text-success" name="file8" id="File" aria-describedby="fileHelp">
+                                </div>
+                                <div class="col-4">
+                                    <small class="form-text text-warning">Back side picture#9</small>
+                                    <label for="File">Files input</label>
+                                    <input type="file" class="form-control-file text-success" name="file9" id="File" aria-describedby="fileHelp">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <small class="form-text text-warning">Back side picture#10</small>
+                                    <label for="File">Files input</label>
+                                    <input type="file" class="form-control-file text-success" name="file10" id="File" aria-describedby="fileHelp">
+                                </div>
+                                <div class="col-4">
+                                    <small class="form-text text-warning">Back side picture#11</small>
+                                    <label for="File">Files input</label>
+                                    <input type="file" class="form-control-file text-success" name="file11" id="File" aria-describedby="fileHelp">
+                                </div>
+                                <div class="col-4">
+                                    <small class="form-text text-warning">Back side picture#12</small>
+                                    <label for="File">Files input</label>
+                                    <input type="file" class="form-control-file text-success" name="file12" id="File" aria-describedby="fileHelp">
+                                </div>
+                            </div>
+                            <!-- images select end -->
+                            <button type="submit" name="addcard" class="btn btn-primary">Confirm</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End addcard Modal Form -->
+        <!-- Removecard modal -->
+        <div class="modal fade" id="removecard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-light mytext1" id="exampleModalLabel">Remove card</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <form action="{{ url_for('remove') }}" method="POST">
+                      <fieldset>
+                          <div class="form-group">
+                              <label class="mr-sm-2" for="removecardtitle">Removecard number</label>
+                              <select class="custom-select form-control input-group mb-2 mr-sm-2 mb-sm-0 mytext1" id="removecardtitle" name="productid" type="text">
+                                <option disabled="" selected="" value="">Choose...</option>
+                                {% for r in production %}
+                                <option value="{{ r.id }}">Card#{{ r.id }}, {{r.trademark}}, {{r.model}}</option>
+                                {% endfor %}
+                              </select>
+                          </div>
+                      </fieldset>
+                      <button type="submit" name="removecard" class="btn btn-1">Confirm</button>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-1" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End remove card modal -->
+        <!-- Select card modal -->
+        <div class="modal fade" id="selectcard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-light mytext1" id="exampleModalLabel">Select card</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <form action="{{ url_for('select') }}" method="POST">
+                      <fieldset>
+                          <div class="form-group">
+                              <label class="mr-sm-2" for="selectcardtitle">Select Card</label>
+                              <select class="custom-select form-control input-group mb-2 mr-sm-2 mb-sm-0 mytext1" id="selectcardtitle" name="productid" type="text">
+                                <option disabled="" selected="" value="">Choose...</option>
+                                {% for r in production %}
+                                <option value="{{ r.id }}">Card#{{ r.id }}, {{r.trademark}}, {{r.model}}</option>
+                                {% endfor %}
+                              </select>
+                          </div>
+                      </fieldset>
+                      <button type="submit" name="removecard" class="btn btn-1">Confirm</button>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-1" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End select card modal -->
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- app's own JavaScript -->
+        <script src="/static/scripts.js"></script>
+        <script>
+            $('.flipcard').click(function (e) {
+                var $card = $(this);
+                if ($card.hasClass("flipped")) {
+                    $card.removeClass('flipped');
+                } else {
+                    $card.addClass('flipped');
+                }
+            });
+        </script>
+    </body>
+    <foot>
+        <div class="card text-center">
+            <div class="card-header text-light">
+                Featured
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-success">Special title treatment</h5>
+                <p class="card-text text-success">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#topsector" class="btn btn-success">Go top</a>
+            </div>
+            <div class="card-footer bgimg3 text-light">
+                Developed by: mmstar
+                for cs50 2018
+            </div>
+        </div>
+    </foot>
+</html>

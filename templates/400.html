@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" class="full-height">
+    <head>
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta -->
+        <meta charset="utf-8"/>
+        <meta content="initial-scale=1, width=device-width" name="viewport"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- App's own CSS -->
+        <link href="/static/styles.css" rel="stylesheet"/>
+        <title>Error page</title>
+        <style>
+            body, html {
+            height: 100%;
+            }
+            .bg {
+            /* The image used */
+            background-image: url("/static/404/architecture2.jpg");
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            }
+
+            h1 {
+            letter-spacing: 8px;
+            color: #c6ff00;
+            }
+
+            h4 {
+            font-size: 30px;
+            color: #c6ff00;
+            letter-spacing: 3px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-dark bg-dark" id="topsector">
+            <!-- Navbar content -->
+            <a class="navbar-brand" href="#">
+                <img src="/static/icons/styleicons/logo/logo2.png" width="30" height="30" alt="">
+            </a>
+            <a class="navbar-brand" href="#">Company name</a>
+        </nav>
+        <!-- Navbar End -->
+        <!-- Intro Section -->
+        <div class="h-100 text-center bg">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="container">
+                    <h1><strong>Error code: {{ top | urlencode }}</strong></h1>
+                    <h4><strong>Explanation: {{ bottom | urlencode }}</strong></h4>
+                    <p> </p>
+                    <a class="btn btn-success" href="{{ url_for('index') }}" role="button">
+                        <span><img src="/static/icons/014-login-2.png" width="20" height="20"></span>
+                        Go home
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- app's own JavaScript -->
+        <script src="/static/scripts.js"></script>
+</body>
